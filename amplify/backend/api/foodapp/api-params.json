@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/foodapp",
+            "lambdaFunction": "foodapp",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/foodapp"
+        }
+    ],
+    "resourceName": "foodapp",
+    "apiName": "foodapp",
+    "functionArns": [
+        {
+            "lambdaFunction": "foodapp"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-foodapp-dev-215722-authRole",
+        "unAuthRoleName": "amplify-foodapp-dev-215722-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "foodapp",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

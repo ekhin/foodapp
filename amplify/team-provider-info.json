@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodapp-dev-215722-authRole",
+      "UnauthRoleArn": "arn:aws:iam::766312307144:role/amplify-foodapp-dev-215722-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::766312307144:role/amplify-foodapp-dev-215722-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-foodapp-dev-215722-deployment",
+      "UnauthRoleName": "amplify-foodapp-dev-215722-unauthRole",
+      "StackName": "amplify-foodapp-dev-215722",
+      "StackId": "arn:aws:cloudformation:us-west-2:766312307144:stack/amplify-foodapp-dev-215722/3ade95d0-a327-11eb-bac0-06715524d561",
+      "AmplifyAppId": "d45zm9z5wa8o7"
+    },
+    "categories": {
+      "auth": {
+        "foodapp": {}
+      },
+      "storage": {
+        "foodapp5d2c2004": {
+          "bucketName": "custom-labels-console-us-west-2-73aca6ff8c",
+          "region": "us-west-2"
+        }
+      },
+      "function": {
+        "foodapp": {
+          "deploymentBucketName": "amplify-foodapp-dev-215722-deployment",
+          "s3Key": "amplify-builds/foodapp-4c76722b464334656a66-build.zip"
+        }
+      }
+    }
+  }
+}
