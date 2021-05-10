@@ -23,51 +23,40 @@ def recognizeImage():
 
 def nutrientHelper():
     recognizedFoodList=[]
+    icecream = ["ice_cream", "large_ice_cream", "small_ice_cream"]
+    hotdog = ["hot_dog", "large_hot_dog", "small_hot_dog"]
+    sandwich = ["club_sandwich", "large_club_sandwich", "small_club_sandwich"]
+    fries = ["french_fries", "large_french_fries", "small_french_fries"]
+    burger = ["large_hamburger", "small_hamburger"]
+    pizza = ["large_pizza", "small_pizza"]
+
+
     try:
         imageResult = recognizeImage()
         if len(imageResult) > 0 :
             for i in imageResult["CustomLabels"]:
                 nutrientList = []
                 recognizedFood ={}
+                size="small"
                 if i["Name"] == "Food":
                     continue
                 foodName = i["Name"]
                 print("foodName")
                 print(foodName)
-                if foodName == "ice_cream":
+                if "large" in foodName:
+                    size="large"
+                if foodName in icecream:
                     foodName = "icecream"
-                if foodName == "large_ice_cream":
-                    foodName = "VANILLA BEAN ICECREAM"
-                if foodName == "small_ice_cream":
-                    foodName = "PREMIUM CHOICE ICECREAM"
-                if foodName == "hot_dog":
+                if foodName in hotdog:
                     foodName = "hotdog"
-                if foodName == "large_hot_dog":
-                    foodName = "Gourmet hotdog"
-                if foodName == "small_hot_dog":
-                    foodName = "Hotdog relish"
-                if foodName == "club_sandwich":
+                if foodName in sandwich:
                     foodName = "sandwich"
-                if foodName == "large_club_sandwich":
-                    foodName = "pork sandwich"
-                if foodName == "small_club_sandwich":
-                    foodName = "pastrami sandwich"
-                if foodName == "french_fries":
-                    foodName = "Potato, french fries, NFS"
-                if foodName == "large_french_fries":
+                if foodName in fries:
                     foodName = "Potato, french fries, fast food"
-                if foodName == "small_french_fries":
-                    foodName = "Potato, home fries, from fresh"
-                if foodName == "large_hamburger":
-                    foodName = "Double cheeseburger (McDonalds)"
-                if foodName == "small_hamburger":
-                    foodName = "Cheeseburger (McDonalds)"
-                if foodName == "large_pizza":
+                if foodName in burger:
+                    foodName = "hamburger"
+                if foodName in pizza:
                     foodName = "PIZZA HUT 14"
-                if foodName == "small_pizza":
-                    foodName = "SLICED PIZZA"
-                if foodName == "pizza":
-                    foodName == "Dessert pizza"
                 # if('Burger' in foodName):
                 #     url = "https://api.nal.usda.gov/fdc/v1/foods/search?"+ "api_key="+API_KEY+'&query="'+foodName+'" mcdonald'
                 # else:
@@ -75,9 +64,11 @@ def nutrientHelper():
                 # print(url)
                 responseBody = http.request('GET', url)
                 response = json.loads(responseBody.data)
-                print(response)
+                # print(response)
+                if response['totalHits'] == 0:
+                    break
                 food = response['foods'][0]
-                recognizedFood['description'] = food['description']
+                recognizedFood['description'] = i["Name"]
 
                 for nutrient in food['foodNutrients']:
                     foodNutrients={}
@@ -93,7 +84,10 @@ def nutrientHelper():
                         foodNutrients['unitName'] = "CAL"
                     else:
                         foodNutrients['unitName'] = nutrient['unitName'].lower()
-                    foodNutrients['value'] = nutrient['value']
+                    if size == "large":
+                        foodNutrients['value'] = nutrient['value'] * 3;
+                    else:
+                        foodNutrients['value'] = nutrient['value']
                     nutrientList.append(foodNutrients)
 
                 recognizedFood['foodNutrients'] = nutrientList
@@ -117,4 +111,3 @@ def handler(event, context):
             'Access-Control-Allow-Headers' : '*'
         }
     }
-

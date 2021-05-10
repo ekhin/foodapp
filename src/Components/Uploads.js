@@ -40,22 +40,21 @@ const UserFileUpload = ({ image }) => {
               
 
 const Portion = ({foodName}) => {
-  if (foodName.includes("Double cheeseburger")){
+  let foodSize = 100;
+  if(foodName.includes("large")){
+    if (foodName.includes("burger") || foodName.includes("fries")){
+      foodSize = foodSize * 2;
+    }else if(foodName.includes("pizza")){
+      foodSize = foodSize * 10;
+    }else{
+      foodSize = foodSize * 3;
+    }
+    
+  }
+  if (foodName){
     return (
       <div>
-        <p> Portion: 1 Double Cheeseburger (165 g)</p>
-      </div>
-    )
-  }else if (foodName.includes("Cheeseburger (McDonalds)")){
-    return (
-      <div>
-        <p> Portion: 1 Cheeseburger (110 g) </p>
-      </div>
-    )
-  }else if (foodName){
-    return (
-      <div>
-        <p> Portion: 1 {foodName} (110 g) </p>
+        <p> Portion: 1 {foodName} ({foodSize} g) </p>
       </div>
     )
   }else {
