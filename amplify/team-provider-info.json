@@ -24,7 +24,7 @@
       "function": {
         "foodapp": {
           "deploymentBucketName": "amplify-foodapp-dev-215722-deployment",
-          "s3Key": "amplify-builds/foodapp-522f367668706f583345-build.zip"
+          "s3Key": "amplify-builds/foodapp-7937546d69724b615653-build.zip"
         }
       }
     }

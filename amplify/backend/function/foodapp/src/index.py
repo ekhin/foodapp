@@ -87,7 +87,7 @@ def nutrientHelper():
                     if size == "large":
                         if "burger" in i["Name"] or "fries" in i["Name"]: 
                             foodNutrients['value'] = nutrient['value'] * 2;
-                        else if "pizza" in i["Name"]:
+                        elif "pizza" in i["Name"]:
                             foodNutrients['value'] = nutrient['value'] * 10;
                         else:
                             foodNutrients['value'] = nutrient['value'] * 3;
