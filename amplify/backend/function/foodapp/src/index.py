@@ -85,7 +85,12 @@ def nutrientHelper():
                     else:
                         foodNutrients['unitName'] = nutrient['unitName'].lower()
                     if size == "large":
-                        foodNutrients['value'] = nutrient['value'] * 3;
+                        if "burger" in i["Name"] or "fries" in i["Name"]: 
+                            foodNutrients['value'] = nutrient['value'] * 2;
+                        else if "pizza" in i["Name"]:
+                            foodNutrients['value'] = nutrient['value'] * 10;
+                        else:
+                            foodNutrients['value'] = nutrient['value'] * 3;
                     else:
                         foodNutrients['value'] = nutrient['value']
                     nutrientList.append(foodNutrients)
